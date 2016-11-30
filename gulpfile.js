@@ -10,12 +10,12 @@ gulp.task('serve', ['sass', 'rigger'], function() {
     });
 
     gulp.watch('./dev/**/*.html', ['rigger']);
-    gulp.watch('./dev/scss/*.scss', ['sass']);
+    gulp.watch('./dev/scss/**/*.{scss,sass}', ['sass']);
     gulp.watch('./build/*.html').on('change', browserSync.reload);
 });
 
 gulp.task('sass', function() {
-    return gulp.src('dev/scss/*.scss')
+    return gulp.src('dev/scss/*.{scss,sass}')
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(gulp.dest('./build/css/'))
         .pipe(browserSync.stream());

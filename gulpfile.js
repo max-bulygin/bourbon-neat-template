@@ -4,6 +4,7 @@ var sass            = require('gulp-sass');
 var autoprefixer    = require('gulp-autoprefixer');
 var maps            = require('gulp-sourcemaps');
 var rigger          = require('gulp-rigger');
+var del             = require('del');
 
 gulp.task('serve', ['sass', 'rigger'], function() {
 
@@ -30,6 +31,10 @@ gulp.task('rigger', function () {
     gulp.src('./dev/html/*.html')
         .pipe(rigger())
         .pipe(gulp.dest('./dev'));
+});
+
+gulp.task('del', function () {
+    return del(['build/**/*']);
 });
 
 gulp.task('default', ['serve']);

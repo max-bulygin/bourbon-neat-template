@@ -1,8 +1,9 @@
-var gulp        = require('gulp');
-var browserSync = require('browser-sync').create();
-var sass        = require('gulp-sass');
-var maps        = require('gulp-sourcemaps');
-var rigger      = require('gulp-rigger');
+var gulp            = require('gulp');
+var browserSync     = require('browser-sync').create();
+var sass            = require('gulp-sass');
+var autoprefixer    = require('gulp-autoprefixer');
+var maps            = require('gulp-sourcemaps');
+var rigger          = require('gulp-rigger');
 
 gulp.task('serve', ['sass', 'rigger'], function() {
 
@@ -20,6 +21,7 @@ gulp.task('sass', function() {
         .pipe(maps.init())
         .pipe(sass({outputStyle: 'expanded'}))
         .pipe(maps.write('./'))
+        .pipe(autoprefixer(['last 15 versions']))
         .pipe(gulp.dest('./dev/css/'))
         .pipe(browserSync.stream());
 });

@@ -6,25 +6,25 @@ var rigger      = require('gulp-rigger');
 gulp.task('serve', ['sass', 'rigger'], function() {
 
     browserSync.init({
-        server: "./build"
+        server: "./dev"
     });
 
-    gulp.watch('./dev/**/*.html', ['rigger']);
+    gulp.watch('./dev/html/**/*.html', ['rigger']);
     gulp.watch('./dev/scss/**/*.s*ss', ['sass']);
-    gulp.watch('./build/*.html').on('change', browserSync.reload);
+    gulp.watch('./dev/*.html').on('change', browserSync.reload);
 });
 
 gulp.task('sass', function() {
     return gulp.src('dev/scss/*.s*ss')
-        .pipe(sass({outputStyle: 'compressed'}))
-        .pipe(gulp.dest('./build/css/'))
+        .pipe(sass({outputStyle: 'expanded'}))
+        .pipe(gulp.dest('./dev/css/'))
         .pipe(browserSync.stream());
 });
 
 gulp.task('rigger', function () {
-    gulp.src('./dev/*.html')
+    gulp.src('./dev/html/*.html')
         .pipe(rigger())
-        .pipe(gulp.dest('./build'));
+        .pipe(gulp.dest('./dev'));
 });
 
 gulp.task('default', ['serve']);

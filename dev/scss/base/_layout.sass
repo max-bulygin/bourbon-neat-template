@@ -1,9 +1,6 @@
-section {
-  @include outer-container();
-}
-aside {
-  @include span-columns(3);
-}
-article {
-  @include span-columns(9)
-}
+section
+  +outer-container()
+aside
+  +span-columns(3)
+article
+  +span-columns(9)

@@ -1,0 +1,28 @@
+@import "../../../bower_components/neat/app/assets/stylesheets/neat-helpers"
+
+$column: 4.2358em !default
+$gutter: 1.618em !default
+$grid-columns: 12 !default
+$max-width: 1200px !default
+
+$visual-grid: true
+$visual-grid-color: blue
+$visual-grid-index: front
+$visual-grid-breakpoints: ()
+
+$first-breakpoint-value:  600   //px value
+$second-breakpoint-value: 900
+$third-breakpoint-value:  1200
+//$fourth-breakpoint-value: 1800px
+
+// Covers 0-599px wide screen size. 2 column grid
+$for-phone-only: new-breakpoint(max-width em($first-breakpoint-value - 1) 4)
+
+// Covers 600-899px wide screen size. 4 column grid
+$for-tablet-portrait-up: new-breakpoint(min-width em($first-breakpoint-value) max-width em($second-breakpoint-value - 1) 8)
+
+// Covers 900-1199px wide screen size. 8 column grid
+$for-tablet-landscape-up: new-breakpoint(min-width em($second-breakpoint-value) max-width em($third-breakpoint-value) 12)
+
+// Covers 1200px and up wide screen size. 12 column grid (default grid size)
+$for-desktop-up: new-breakpoint(min-width em($third-breakpoint-value))

@@ -16,7 +16,7 @@ article, aside, details, figcaption, figure, footer, header, menu, nav, section 
 }
 
 body {
-  line-height: 1.2;
+  line-height: 1;
   -moz-osx-font-smoothing: grayscale; /*fixing bolder fonts in Safari*/
   -webkit-font-smoothing: antialiased;
   -moz-box-sizing: border-box;
@@ -56,4 +56,5 @@ a {
 
 img {
   max-width: 100%;
+  vertical-align: bottom;
 }

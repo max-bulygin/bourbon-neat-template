@@ -1,6 +1,7 @@
 var gulp            = require('gulp');
 var browserSync     = require('browser-sync').create();
-var sass            = require('gulp-sass');
+//var sass            = require('gulp-sass');
+var rubySass        = require('gulp-ruby-sass');
 var autoprefixer    = require('gulp-autoprefixer');
 var maps            = require('gulp-sourcemaps');
 var include         = require('gulp-file-include');
@@ -9,27 +10,42 @@ var imagemin        = require('gulp-imagemin');
 var pngquant        = require('imagemin-pngquant');
 var cleanCSS        = require('gulp-clean-css');
 
-gulp.task('serve', ['sass', 'include'], function() {
+gulp.task('serve', ['rubySass','include'], function() {
 
     browserSync.init({
-        server: "./dev"
+        server: './dev',
+        browser: 'google chrome',
+        injectChanges: true,
+        // Uncomment this options to generate temporary public URL 
+        //tunnel: true,
+        //gostMode: false
     });
 
     gulp.watch('./dev/html/**/*.html', ['include']);
-    gulp.watch('./dev/scss/**/*.s*ss', ['sass']);
+    gulp.watch('./dev/scss/**/*.*', ['rubySass']);
     gulp.watch('./dev/*.html').on('change', browserSync.reload);
 
 });
 
-gulp.task('sass', function() {
-    return gulp.src('dev/scss/*.s*ss')
-        .pipe(maps.init())
-        .pipe(sass({outputStyle: 'expanded'}))
-        .pipe(autoprefixer(['last 15 versions']))
+gulp.task('rubySass', function() {
+    return rubySass('dev/scss/**/*.*', {sourcemap: true})
+        .on('error', rubySass.logError)
         .pipe(maps.write('./'))
         .pipe(gulp.dest('./dev/css/'))
         .pipe(browserSync.stream());
 });
+
+// Uncomment this section to use libSass instead
+
+//gulp.task('sass', function() {
+//    return gulp.src('dev/scss/**/*.*')
+//        .pipe(maps.init())
+//        .pipe(sass({outputStyle: 'expanded'}))
+//        .pipe(autoprefixer(['last 15 versions']))
+//        .pipe(maps.write('./'))
+//        .pipe(gulp.dest('./dev/css/'))
+//        .pipe(browserSync.stream());
+//});
 
 gulp.task('include', function () {
     gulp.src('./dev/html/*.html')

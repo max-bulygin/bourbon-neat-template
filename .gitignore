@@ -1,3 +1,7 @@
+# Generated project files
+dev/css
+dev/*.html
+
 # Numerous always-ignore extensions
 *.diff
 *.err

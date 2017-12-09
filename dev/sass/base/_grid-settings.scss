@@ -1,18 +1,18 @@
-@import "../../../bower_components/neat/app/assets/stylesheets/neat-helpers"
+@import "../../../bower_components/neat/core/neat/settings/settings";
 
-$column: 4.2358em
-$gutter: 1.618em
-$grid-columns: 12
-$max-width: 1200px
+$column: 4.2358em;
+$gutter: 1.618em;
+$grid-columns: 12;
+$max-width: 1200px;
 
-$visual-grid: true
-$visual-grid-color: green
-$visual-grid-index: front
-$visual-grid-breakpoints: ()
+$visual-grid: true;
+$visual-grid-color: green;
+$visual-grid-index: front;
+$visual-grid-breakpoints: ();
 
-$first-breakpoint-value:  600px   //px value
-$second-breakpoint-value: 900px
-$third-breakpoint-value:  1200px
+$first-breakpoint-value:  600px;   //px value
+$second-breakpoint-value: 900px;
+$third-breakpoint-value:  1200px;
 //$fourth-breakpoint-value: 1800px
 
 //// Covers 0-599px wide screen size. 2 column grid

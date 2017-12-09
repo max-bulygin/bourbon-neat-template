@@ -1,0 +1,9 @@
+.icon {
+  display: inline-block;
+  position: relative;
+  @include size(1em);
+}
+
+@if mixin-exists(sprites) {
+  @include sprites($spritesheet-sprites);
+}

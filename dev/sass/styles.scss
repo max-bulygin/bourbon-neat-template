@@ -1,8 +1,11 @@
 @import "../../bower_components/bourbon/app/assets/stylesheets/bourbon"
 @import "base/grid-settings"
-@import "../../bower_components/neat/app/assets/stylesheets/neat"
+@import "../../bower_components/neat/core/neat"
 
 @import "../../bower_components/normalize-scss/sass/normalize/import-now"
 
 @import "base/typography"
-@import "base/layout"
+@import "base/sprite"
+//@import "base/layout"
+
+@import "blocks/icons"

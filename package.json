@@ -1,24 +1,27 @@
 {
-  "name": "bourbon-neat",
-  "version": "1.0.0",
-  "description": "",
+  "name": "bourbon-neat-starter",
+  "version": "2.0.0",
+  "description": "HTML Starter Template based on Bourbon/Neat",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "devcoyote.com",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.18.8",
-    "del": "^2.2.2",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-clean-css": "^3.0.3",
-    "gulp-file-include": "^1.0.0",
-    "gulp-imagemin": "^3.1.1",
-    "gulp-ruby-sass": "^2.1.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-file-include": "^2.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^4.0.0",
     "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.4.1",
-    "imagemin-pngquant": "^5.0.0"
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-svgmin": "^1.2.4",
+    "gulp-svgstore": "^6.1.0",
+    "gulp.spritesmith": "^6.7.0",
+    "imagemin-pngquant": "^5.0.1"
   }
 }

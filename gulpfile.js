@@ -1,82 +1,123 @@
-var gulp            = require('gulp');
-var browserSync     = require('browser-sync').create();
-//var sass            = require('gulp-sass');
-var rubySass        = require('gulp-ruby-sass');
-var autoprefixer    = require('gulp-autoprefixer');
-var maps            = require('gulp-sourcemaps');
-var include         = require('gulp-file-include');
-var del             = require('del');
-var imagemin        = require('gulp-imagemin');
-var pngquant        = require('imagemin-pngquant');
-var cleanCSS        = require('gulp-clean-css');
+var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var maps = require('gulp-sourcemaps');
+var include = require('gulp-file-include');
+var del = require('del');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
+var cleanCSS = require('gulp-clean-css');
+var spriteSmith = require('gulp.spritesmith');
+var gulpif = require('gulp-if');
+var svgstore = require('gulp-svgstore');
+var svgmin = require('gulp-svgmin');
+var watch = require('gulp-watch');
+var rename = require('gulp-rename');
 
-gulp.task('serve', ['rubySass','include'], function() {
+var reload = browserSync.reload;
+
+var Paths = {
+    DEV: './dev/',
+    HTML: './dev/html/',
+    SASS: './dev/sass/',
+    CSS: './dev/css/',
+    JS: './dev/js/',
+    IMG: './dev/img/',
+    ICONS: './dev/img/icons/',
+    SPRITE: './dev/img/sprite/'
+};
+
+var AUTOPREFIXER_BROWSERS = [
+    'ie >= 10',
+    'ie_mob >= 10',
+    'ff >= 30',
+    'chrome >= 34',
+    'safari >= 7',
+    'opera >= 23',
+    'ios >= 7',
+    'android >= 4.4',
+    'bb >= 10'
+];
+
+gulp.task('serve', ['sass', 'include', 'svgstore', 'sprite', 'icons-watch'], function () {
 
     browserSync.init({
-        server: './dev',
+        server: Paths.DEV,
         browser: 'google chrome',
-        injectChanges: true,
-        // Uncomment this options to generate temporary public URL 
-        //tunnel: true,
-        //gostMode: false
+        injectChanges: true
     });
 
-    gulp.watch('./dev/html/**/*.html', ['include']);
-    gulp.watch('./dev/scss/**/*.*', ['rubySass']);
-    gulp.watch('./dev/*.html').on('change', browserSync.reload);
-
+    gulp.watch([Paths.HTML + '**/*.html'], ['include', reload]);
+    gulp.watch([Paths.SASS + '**/*.scss'], ['sass']);
 });
 
-gulp.task('rubySass', function() {
-    return rubySass('dev/scss/**/*.*', {sourcemap: true})
-        .on('error', rubySass.logError)
+gulp.task('sass', function () {
+    return gulp.src(Paths.SASS + '**/*.*')
+        .pipe(maps.init())
+        .pipe(sass({outputStyle: 'expanded'}))
+        .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
         .pipe(maps.write('./'))
-        .pipe(gulp.dest('./dev/css/'))
+        .pipe(gulp.dest(Paths.CSS))
         .pipe(browserSync.stream());
 });
 
-// Uncomment this section to use libSass instead
-
-//gulp.task('sass', function() {
-//    return gulp.src('dev/scss/**/*.*')
-//        .pipe(maps.init())
-//        .pipe(sass({outputStyle: 'expanded'}))
-//        .pipe(autoprefixer(['last 15 versions']))
-//        .pipe(maps.write('./'))
-//        .pipe(gulp.dest('./dev/css/'))
-//        .pipe(browserSync.stream());
-//});
-
 gulp.task('include', function () {
-    gulp.src('./dev/html/*.html')
+    gulp.src(Paths.HTML + '*.html')
         .pipe(include({
             prefix: '@@',
             basepath: '@file'
         }))
-        .pipe(gulp.dest('./dev'));
-});
-gulp.task('minify-css', function() {
-    return gulp.src('dev/css/*.css')
-        .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest('build/css'));
+        .pipe(gulp.dest(Paths.DEV));
 });
 
-gulp.task('imagemin', function() {
-    return gulp.src('dev/img/**/*')
+gulp.task('minify-css', function () {
+    return gulp.src('dev/css/*.css')
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest('build/css')); // TODO place minified file next to origin
+});
+
+gulp.task('imagemin', function () {
+    return gulp.src(Paths.IMG + '*.{jpg, jpeg, png}')
         .pipe(imagemin({
             interlaced: true,
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         }))
-        .pipe(gulp.dest('build/img'));
+        .pipe(gulp.dest('build/img')); //TODO use imagemin properly
 });
 
-gulp.task('build', ['del', 'imagemin', 'minify-css'], function() {
+gulp.task('svgstore', function () {
+    return gulp.src(Paths.ICONS + '*.svg')
+        .pipe(svgmin())
+        .pipe(svgstore())
+        .pipe(gulp.dest(Paths.IMG));
+});
 
-    var buildHtml = gulp.src('dev/*.html').pipe(gulp.dest('build/'));
-    var buildFonts = gulp.src('dev/fonts/**/*').pipe(gulp.dest('build/fonts'));
+gulp.task('sprite', function () {
+    var spriteData = gulp.src(Paths.SPRITE + '*.png').pipe(spriteSmith({
+        imgName: 'sprite.png',
+        cssName: '_sprite.scss',
+        imgPath: '../img/sprite.png',
+        padding: 2
+    }));
+    return spriteData
+        .pipe(gulpif('*.png', gulp.dest(Paths.IMG)))
+        .pipe(gulpif('*.scss', gulp.dest(Paths.SASS + 'base/')));
+});
 
+gulp.task('icons-watch', function () {
+    var path2SVG = Paths.ICONS.replace(/^\.\//, '') + '*';
+    var path2PNG = Paths.SPRITE.replace(/^\.\//, '') + '*';
+
+    watch(path2SVG, function () {
+        gulp.start('svgstore');
+    });
+
+    watch(path2PNG, function () {
+        gulp.start('sprite');
+    })
 });
 
 gulp.task('del', function () {

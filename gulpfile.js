@@ -1,20 +1,16 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var maps = require('gulp-sourcemaps');
-var include = require('gulp-file-include');
 var del = require('del');
-var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
-var cleanCSS = require('gulp-clean-css');
 var spriteSmith = require('gulp.spritesmith');
-var gulpif = require('gulp-if');
-var svgstore = require('gulp-svgstore');
-var svgmin = require('gulp-svgmin');
-var watch = require('gulp-watch');
-var rename = require('gulp-rename');
+var gulpLoadPlugins = require('gulp-load-plugins');
 
+var $ = gulpLoadPlugins({
+    rename: {
+        'gulp-clean-css': 'clean',
+        'gulp-file-include': 'include'
+    }
+});
 var reload = browserSync.reload;
 
 var Paths = {
@@ -54,17 +50,18 @@ gulp.task('serve', ['sass', 'include', 'svgstore', 'sprite', 'icons-watch'], fun
 
 gulp.task('sass', function () {
     return gulp.src(Paths.SASS + '**/*.*')
-        .pipe(maps.init())
-        .pipe(sass({outputStyle: 'expanded'}))
-        .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
-        .pipe(maps.write('./'))
+        .pipe($.sourcemaps.init())
+        .pipe($.sass({outputStyle: 'expanded'})
+            .on('error', $.sass.logError))
+        .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+        .pipe($.sourcemaps.write('./'))
         .pipe(gulp.dest(Paths.CSS))
         .pipe(browserSync.stream());
 });
 
 gulp.task('include', function () {
     gulp.src(Paths.HTML + '*.html')
-        .pipe(include({
+        .pipe($.include({
             prefix: '@@',
             basepath: '@file'
         }))
@@ -73,13 +70,13 @@ gulp.task('include', function () {
 
 gulp.task('minify-css', function () {
     return gulp.src('dev/css/*.css')
-        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe($.clean({compatibility: 'ie8'}))
         .pipe(gulp.dest('build/css')); // TODO place minified file next to origin
 });
 
 gulp.task('imagemin', function () {
     return gulp.src(Paths.IMG + '*.{jpg, jpeg, png}')
-        .pipe(imagemin({
+        .pipe($.imagemin({
             interlaced: true,
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
@@ -90,8 +87,8 @@ gulp.task('imagemin', function () {
 
 gulp.task('svgstore', function () {
     return gulp.src(Paths.ICONS + '*.svg')
-        .pipe(svgmin())
-        .pipe(svgstore())
+        .pipe($.svgmin())
+        .pipe($.svgstore())
         .pipe(gulp.dest(Paths.IMG));
 });
 
@@ -103,21 +100,16 @@ gulp.task('sprite', function () {
         padding: 2
     }));
     return spriteData
-        .pipe(gulpif('*.png', gulp.dest(Paths.IMG)))
-        .pipe(gulpif('*.scss', gulp.dest(Paths.SASS + 'base/')));
+        .pipe($.if('*.png', gulp.dest(Paths.IMG)))
+        .pipe($.if('*.scss', gulp.dest(Paths.SASS + 'base/')));
 });
 
 gulp.task('icons-watch', function () {
     var path2SVG = Paths.ICONS.replace(/^\.\//, '') + '*';
     var path2PNG = Paths.SPRITE.replace(/^\.\//, '') + '*';
 
-    watch(path2SVG, function () {
-        gulp.start('svgstore');
-    });
-
-    watch(path2PNG, function () {
-        gulp.start('sprite');
-    })
+    $.watch(path2SVG, function () {gulp.start('svgstore');});
+    $.watch(path2PNG, function () {gulp.start('sprite');})
 });
 
 gulp.task('del', function () {

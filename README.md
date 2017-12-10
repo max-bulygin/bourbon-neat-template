@@ -17,6 +17,8 @@ Starter kit for new projects relying on [Bourbon](http://bourbon.io/docs/) mixin
     * :open_file_folder: `img` - images
         * :file_folder: `icons` - your svg icons
         * :file_folder: `sprite` - your png icons
+    * :open_file_folder: `js` - javascript
+        * :file_folder: `modules` - your js modules
     * :open_file_folder: `sass`
         * :file_folder: `base` - the most generic styles
         * :file_folder: `blocks` - modules or block specific styles

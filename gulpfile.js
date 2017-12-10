@@ -4,6 +4,9 @@ var del = require('del');
 var pngquant = require('imagemin-pngquant');
 var spriteSmith = require('gulp.spritesmith');
 var gulpLoadPlugins = require('gulp-load-plugins');
+var browserify = require('browserify');
+var stream = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 
 var $ = gulpLoadPlugins({
     rename: {
@@ -36,7 +39,7 @@ var AUTOPREFIXER_BROWSERS = [
     'bb >= 10'
 ];
 
-gulp.task('serve', ['sass', 'include', 'svgstore', 'sprite', 'icons-watch'], function () {
+gulp.task('serve', ['sass', 'include', 'scripts', 'svgstore', 'sprite', 'watch'], function () {
 
     browserSync.init({
         server: Paths.DEV,
@@ -46,6 +49,7 @@ gulp.task('serve', ['sass', 'include', 'svgstore', 'sprite', 'icons-watch'], fun
 
     gulp.watch([Paths.HTML + '**/*.html'], ['include', reload]);
     gulp.watch([Paths.SASS + '**/*.scss'], ['sass']);
+    gulp.watch([Paths.JS + '**/*.js'], ['scripts', reload]);
 });
 
 gulp.task('sass', function () {
@@ -57,6 +61,16 @@ gulp.task('sass', function () {
         .pipe($.sourcemaps.write('./'))
         .pipe(gulp.dest(Paths.CSS))
         .pipe(browserSync.stream());
+});
+
+gulp.task('scripts', function () {
+    return browserify(Paths.JS + 'scripts.js').bundle()
+        .pipe(stream('bundle.min.js'))
+        .pipe(buffer())
+        .pipe($.sourcemaps.init({loadMaps: true}))
+        .pipe($.uglify())
+        .pipe($.sourcemaps.write('./'))
+        .pipe(gulp.dest(Paths.JS))
 });
 
 gulp.task('include', function () {
@@ -104,7 +118,7 @@ gulp.task('sprite', function () {
         .pipe($.if('*.scss', gulp.dest(Paths.SASS + 'base/')));
 });
 
-gulp.task('icons-watch', function () {
+gulp.task('watch', function () {
     var path2SVG = Paths.ICONS.replace(/^\.\//, '') + '*';
     var path2PNG = Paths.SPRITE.replace(/^\.\//, '') + '*';
 

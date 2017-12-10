@@ -1,6 +1,9 @@
 # Generated project files
 dev/css
 dev/*.html
+dev/js/bundle.js
+dev/js/bundle.min.js
+dev/js/bundle.min.js.map
 
 # Numerous always-ignore extensions
 *.diff

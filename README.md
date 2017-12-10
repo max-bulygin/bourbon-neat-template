@@ -11,12 +11,12 @@ Starter kit for new projects relying on [Bourbon](http://bourbon.io/docs/) mixin
 ## Folder structure
 
 * :open_file_folder: `dev` - working directory
-    1 :open_file_folder: `fonts` - your fonts
-    2 :open_file_folder: `html` - your html pages
+    * :open_file_folder: `fonts` - your fonts
+    * :open_file_folder: `html` - your html pages
         * :file_folder: `templates` - your page partials
-    3 :open_file_folder: `img` - images
+    * :open_file_folder: `img` - images
         * :file_folder: `icons` - your svg icons
         * :file_folder: `sprite` - your png icons
-    4 :open_file_folder: `sass`
+    * :open_file_folder: `sass`
         * :file_folder: `base` - the most generic styles
         * :file_folder: `blocks` - modules or block specific styles

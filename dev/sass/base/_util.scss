@@ -1,3 +1,7 @@
+.cf {
+  @include clearfix;
+}
+
 .hidden {
   display: none;
 }

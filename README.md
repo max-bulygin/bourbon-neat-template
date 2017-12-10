@@ -1,6 +1,17 @@
 # bourbon-neat-starter
 
-Starter kit for new projects relying on [Bourbon](http://bourbon.io/docs/) mixin library and [Neat](https://neat.bourbon.io/docs/latest/) grid system, Normalize.css, [Animate.css](https://github.com/daneden/animate.css)
+Starter kit for new HTML projects featuring:
+#### CSS
+* [Bourbon](http://bourbon.io/docs/)
+* [Neat](https://neat.bourbon.io/docs/latest/)
+* [Animate.css](https://github.com/daneden/animate.css)
+* [Normalize.css](https://github.com/necolas/normalize.css/)
+
+#### JS
+* [jQuery](http://api.jquery.com)
+* [svg4everybody](https://www.npmjs.com/package/svg4everybody)
+* [Owl Carousel 2](https://owlcarousel2.github.io/OwlCarousel2/docs/started-welcome.html)
+* [Waypoints](http://imakewebthings.com/waypoints/guides/jquery-zepto/)
 
 ## Quick start
 

@@ -1,6 +1,7 @@
 .icon {
   display: inline-block;
   position: relative;
+  fill: currentColor;
   @include size(1em);
 }
 

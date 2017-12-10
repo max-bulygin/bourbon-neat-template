@@ -1,6 +1,6 @@
 # bourbon-neat-starter
 
-Starter kit for new projects relying on [Bourbon](http://bourbon.io/docs/) mixin library and [Neat](https://neat.bourbon.io/docs/latest/) grid system, Normalize.css.
+Starter kit for new projects relying on [Bourbon](http://bourbon.io/docs/) mixin library and [Neat](https://neat.bourbon.io/docs/latest/) grid system, Normalize.css, [Animate.css](https://github.com/daneden/animate.css)
 
 ## Quick start
 

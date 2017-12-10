@@ -20,3 +20,5 @@ Starter kit for new projects relying on [Bourbon](http://bourbon.io/docs/) mixin
     * :open_file_folder: `sass`
         * :file_folder: `base` - the most generic styles
         * :file_folder: `blocks` - modules or block specific styles
+        * :file_folder: `settings` - globally-available variables and configs
+        * :file_folder: `tools` - useful mixins and helper classes

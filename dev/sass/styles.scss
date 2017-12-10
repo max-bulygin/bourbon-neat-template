@@ -1,13 +1,13 @@
-@import "base/mixins";
-@import "base/variables";
+@import "tools/mixins";
+@import "settings/variables";
 
 @import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
-@import "base/grid-settings";
+@import "settings/grid-settings";
 @import "../../bower_components/neat/core/neat";
 
 @import "../../bower_components/normalize-scss/sass/normalize/import-now";
 
-@import "base/util";
+@import "tools/util";
 @import "base/typography";
 @import "base/sprite";
 //@import "base/layout"

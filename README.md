@@ -10,6 +10,7 @@ Starter kit for new projects relying on [Bourbon](http://bourbon.io/docs/) mixin
 
 ## Folder structure
 
+```
 :open_file_folder: `dev` - working directory
     :open_file_folder: `fonts` - your fonts
     :open_file_folder: `html` - your html pages
@@ -20,3 +21,4 @@ Starter kit for new projects relying on [Bourbon](http://bourbon.io/docs/) mixin
     :open_file_folder: `sass`
         :file_folder: `base` - the most generic styles
         :file_folder: `blocks` - modules or block specific styles
+```

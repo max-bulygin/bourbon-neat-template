@@ -44,6 +44,12 @@ Starter kit for new HTML projects featuring:
     * `index.html` file compiled from `html` folder and other pages you placed there;
     * `bundle.js`, `bundle.min.js`, `bundle.min.js.map` files in `js` folder, compiled from `scripts.js`;
     * `icons.svg` and `sprite.png` files generated from corresponding `img` sub-folders;
+3. When you run build task, gulp will gently clean up `dist` folder if it exists before running new build. This means only files and some folders written to `dist` by the build task itself will be deleted. That way you can keep working with files created afterwards in `dist`. Those folder and files are:
+    * `dist/css/styles.min.css`;
+    * `dist/js/bundle.min.js`;
+    * `dist/*.html`;
+    * `dist/fonts`;
+    * `dist/img`;
 
 ## Upcoming features task list
 

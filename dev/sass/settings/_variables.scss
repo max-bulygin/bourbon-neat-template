@@ -7,3 +7,10 @@ $bp__sm: 768px;
 $bp__md: 992px;
 $bp__lg: 1200px;
 $bp__xl: 1500px;
+
+// TRANSITIONS
+$transitions: (
+  prop: all,
+  time: .2s,
+  func: ease
+)

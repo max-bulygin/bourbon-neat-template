@@ -44,3 +44,10 @@ Starter kit for new HTML projects featuring:
     * `index.html` file compiled from `html` folder and other pages you placed there;
     * `bundle.js`, `bundle.min.js`, `bundle.min.js.map` files in `js` folder, compiled from `scripts.js`;
     * `icons.svg` and `sprite.png` files generated from corresponding `img` sub-folders;
+
+## Upcoming features task list
+
+- [ ] Add code style linters
+- [ ] Setup full build process
+- [ ] Add few more useful jQuery plugins such as Fancybox, Smooth Scroll etc
+- [ ] Bring more useful classes and code snippets in project, expand classes with generic 'fit everywhere' styles

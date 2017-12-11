@@ -1,17 +1,23 @@
-@import "tools/mixins";
+/// SETTINGS AND IMPORTS
 @import "settings/variables";
-
-@import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "settings/grid-settings";
+@import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "../../bower_components/neat/core/neat";
-
 @import "../../bower_components/normalize-scss/sass/normalize/import-now";
 @import "../../bower_components/animate.css/source/base";
 // import required animations from source sub-folder
 
+/// TOOLS
+@import "tools/mixins";
 @import "tools/util";
+
+/// GENERIC STYLES
 @import "base/typography";
 @import "base/sprite";
 @import "base/layout";
 
+/// BLOCK STYLES
+@import "blocks/page-header";
+@import "blocks/page-footer";
+@import "blocks/owl-carousel";
 @import "blocks/icons";

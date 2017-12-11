@@ -35,3 +35,12 @@ Starter kit for new HTML projects featuring:
         * :file_folder: `blocks` - modules or block specific styles
         * :file_folder: `settings` - globally-available variables and configs
         * :file_folder: `tools` - useful mixins and helper classes
+
+## Basic rules and how it works
+
+1. Use `bower` to manage all CSS dependencies, and `npm` for all JS dependencies. It may be subject to change in the future.
+2. All work is going on in`dev` folder where Gulp will generate some files and folders:
+    * `css` folder with `styles.css` and `styles.css.map`;
+    * `index.html` file compiled from `html` folder and other pages you placed there;
+    * `bundle.js`, `bundle.min.js`, `bundle.min.js.map` files in `js` folder, compiled from `scripts.js`;
+    * `icons.svg` and `sprite.png` files generated from corresponding `img` sub-folders;

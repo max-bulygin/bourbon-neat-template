@@ -45,3 +45,16 @@
     color: inherit; ///[2]
   }
 }
+
+/// Center item with unknown width and height
+
+@mixin center-unknown() {
+  @include position(absolute, 50% null null 50%);
+  transform: translate(-50%, -50%);
+}
+
+/// Define default transition
+
+@mixin transit($p: map_get($transitions, prop), $t: map_get($transitions, time), $f: map_get($transitions, func)) {
+  transition: $p $t $f;
+}

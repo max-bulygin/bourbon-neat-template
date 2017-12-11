@@ -1,5 +1,8 @@
 /// Setup default grid parameters for your project.
 /// $neat-grid will be used up to $xs breakpoint according to mobile first approach
+/// Useful articles links:
+///   https://derekshirk.com/upgrading-working-new-neat-2-0-grid/
+///   https://robots.thoughtbot.com/the-release-of-neat-2-0-a-lightweight-and-flexible-sass-grid
 
 $neat-grid: (
   gutter: 10px,

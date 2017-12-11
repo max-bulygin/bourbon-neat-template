@@ -1,6 +1,4 @@
-/**
- * Reset default list styles
- */
+/// Reset default list styles
 
 @mixin reset-list() {
   margin: 0;
@@ -8,25 +6,21 @@
   list-style: none;
 }
 
-/**
- * Removes any scrollbar from current container
- *
- * 1. IE 10+
- * 2. Firefox
- * 3. Chrome, Safari
- */
+/// Removes any scrollbar from current container
+///
+/// 1. IE 10+
+/// 2. Firefox
+/// 3. Chrome, Safari
 
 @mixin hide-scrollbar() {
-  -ms-overflow-style: none; /* [1] */
-  overflow: -moz-scrollbars-none; /* [2] */
+  -ms-overflow-style: none; ///[1]
+  overflow: -moz-scrollbars-none; ///[2]
   &::-webkit-scrollbar {
-    display: none; /* [3] */
+    display: none; ///[3]
   }
 }
 
-/**
- * Removes arrow controls from inputs with number type
- */
+/// Removes arrow controls from inputs with number type
 
 @mixin hide-number-arrows() {
   input[type="number"] {
@@ -39,17 +33,15 @@
   }
 }
 
-/**
- * Removes improper links styling for phone-like numbers on touch devices
- *
- * 1. Disable targeting for this element
- * 2. Remove link styles
- */
+/// Removes improper links styling for phone-like numbers on touch devices
+///
+/// 1. Disable targeting for this element
+/// 2. Remove link styles
 
 @mixin no-pointer-events() {
-  pointer-events: none; /* [1] */
+  pointer-events: none; ///[1]
   a {
-    text-decoration: none; /* [2] */
-    color: inherit; /* [2] */
+    text-decoration: none; ///[2]
+    color: inherit; ///[2]
   }
 }

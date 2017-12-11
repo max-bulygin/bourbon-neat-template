@@ -1,0 +1,27 @@
+.grid-container {
+  @include grid-container;
+}
+
+.grid-visual {
+  @include grid-visual;
+}
+
+//.left {
+//  @include grid-column(12);
+//  @include grid-media($xs-grid) {
+//    @include grid-column(6);
+//  }
+//  @include grid-media($sm-grid) {
+//    @include grid-column(4);
+//  }
+//}
+//
+//.right {
+//  @include grid-column(12);
+//  @include grid-media($xs-grid) {
+//    @include grid-column(6);
+//  }
+//  @include grid-media($sm-grid) {
+//    @include grid-column(8);
+//  }
+//}

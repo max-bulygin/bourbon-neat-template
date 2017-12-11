@@ -1,28 +1,29 @@
-@import "../../../bower_components/neat/core/neat/settings/settings";
+/// Setup default grid parameters for your project.
+/// $neat-grid will be used up to $xs breakpoint according to mobile first approach
 
-$column: 4.2358em;
-$gutter: 1.618em;
-$grid-columns: 12;
-$max-width: 1200px;
+$neat-grid: (
+  gutter: 10px,
+  color: rgba(#00d4ff, 0.5)
+);
 
-$visual-grid: true;
-$visual-grid-color: green;
-$visual-grid-index: front;
-$visual-grid-breakpoints: ();
+/// Setup grid parameters to other screen widths if needed
 
-$first-breakpoint-value:  600px;   //px value
-$second-breakpoint-value: 900px;
-$third-breakpoint-value:  1200px;
-//$fourth-breakpoint-value: 1800px
+$xs-grid: (
+  media: $bp__xs
+);
 
-//// Covers 0-599px wide screen size. 2 column grid
-//$for-phone-only: new-breakpoint(max-width $first-breakpoint-value - 1 4)
-//
-//// Covers 600-899px wide screen size. 4 column grid
-//$for-tablet-portrait-up: new-breakpoint(min-width em($first-breakpoint-value) max-width em($second-breakpoint-value - 1) 8)
-//
-//// Covers 900-1199px wide screen size. 8 column grid
-//$for-tablet-landscape-up: new-breakpoint(min-width em($second-breakpoint-value) max-width em($third-breakpoint-value) 12)
-//
-//// Covers 1200px and up wide screen size. 12 column grid (default grid size)
-//$for-desktop-up: new-breakpoint(min-width em($third-breakpoint-value))
+$sm-grid: (
+  media: $bp__sm
+);
+
+$md-grid: (
+  media: $bp__md
+);
+
+$lg-grid: (
+  media: $bp__lg
+);
+
+$xl-grid: (
+  media: $bp__xl
+);

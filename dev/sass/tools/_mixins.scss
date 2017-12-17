@@ -1,9 +1,25 @@
-/// Reset default list styles
+/// Prevent OS X to render light text on dark backgrounds too bold:
+/// http://www.usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
+///
+/// 1. Chrome
+/// 2. Firefox
+/// 3. Revert to defaults if needed
 
-@mixin reset-list() {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+@mixin font-smoothing($value: on) {
+  @if $value == on {
+    -webkit-font-smoothing: antialiased; ///[1]
+    -moz-osx-font-smoothing: grayscale; ///[2]
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased; ///[3]
+    -moz-osx-font-smoothing: auto; ///[3]
+  }
+}
+
+/// Removes IOS tap highlighting
+
+@mixin no-tap-highlight() {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 /// Removes any scrollbar from current container
@@ -51,6 +67,14 @@
 @mixin center-unknown() {
   @include position(absolute, 50% null null 50%);
   transform: translate(-50%, -50%);
+}
+
+/// Reset default list styles
+
+@mixin reset-list() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 /// Define default transition

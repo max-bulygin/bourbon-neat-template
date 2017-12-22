@@ -18,16 +18,16 @@ var $ = gulpLoadPlugins({
 var reload = browserSync.reload;
 
 var Paths = {
-    DEV: './dev/',
-    DIST: './dist/',
-    HTML: './dev/html/',
-    FONTS: './dev/fonts/',
-    SASS: './dev/sass/',
-    CSS: './dev/css/',
-    JS: './dev/js/',
-    IMG: './dev/img/',
-    ICONS: './dev/img/icons/',
-    SPRITE: './dev/img/sprite/'
+    DEV: 'dev/',
+    DIST: 'dist/',
+    HTML: 'dev/html/',
+    FONTS: 'dev/fonts/',
+    SASS: 'dev/sass/',
+    CSS: 'dev/css/',
+    JS: 'dev/js/',
+    IMG: 'dev/img/',
+    ICONS: 'dev/img/icons/',
+    SPRITE: 'dev/img/sprite/'
 };
 
 var AUTOPREFIXER_BROWSERS = [

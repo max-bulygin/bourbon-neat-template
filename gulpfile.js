@@ -12,7 +12,8 @@ var $ = gulpLoadPlugins({
     rename: {
         'gulp-clean-css': 'clean',
         'gulp-file-include': 'include',
-        'gulp-group-css-media-queries': 'gcmq'
+        'gulp-group-css-media-queries': 'gcmq',
+        'gulp-html-replace': 'replace'
     }
 });
 var reload = browserSync.reload;
@@ -157,6 +158,9 @@ gulp.task('copy', function () {
         .pipe($.size({title: 'fonts'}));
 
     gulp.src(Paths.DEV + '*.html')
+        .pipe($.replace({
+            'css': 'css/styles.min.css'
+        }))
         .pipe(gulp.dest(Paths.DIST))
         .pipe($.size({title: 'html'}));
 

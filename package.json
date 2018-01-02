@@ -11,6 +11,7 @@
   "devDependencies": {
     "browser-sync": "^2.18.13",
     "browserify": "^14.5.0",
+    "browserify-shim": "^3.8.14",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
@@ -37,5 +38,18 @@
     "owl.carousel": "^2.2.0",
     "svg4everybody": "^2.1.9",
     "waypoints": "^4.0.1"
+  },
+  "browser": {
+    "waypoints": "./node_modules/waypoints/lib/jquery.waypoints.js"
+  },
+  "browserify-shim": {
+    "waypoints": {
+      "exports": "waypoints"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
   }
 }

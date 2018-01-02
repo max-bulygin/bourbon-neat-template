@@ -27,7 +27,6 @@
     "gulp-svgmin": "^1.2.4",
     "gulp-svgstore": "^6.1.0",
     "gulp-uglify": "^3.0.0",
-    "gulp-watch": "^4.3.11",
     "gulp.spritesmith": "^6.7.0",
     "imagemin-pngquant": "^5.0.1",
     "vinyl-buffer": "^1.0.0",

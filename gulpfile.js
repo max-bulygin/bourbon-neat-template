@@ -49,17 +49,21 @@ var safeClean = [
     Paths.DIST + 'fonts'
 ];
 
-gulp.task('serve', ['sass', 'include', 'scripts', 'svgstore', 'sprite', 'watch'], function () {
+gulp.task('serve', ['sass', 'include', 'scripts', 'svgstore', 'sprite'], function () {
 
     browserSync.init({
+        files: Paths.CSS + '*.css',
         server: Paths.DEV,
         browser: 'google chrome',
-        injectChanges: true
+        injectChanges: true,
+        ui: false
     });
 
     gulp.watch([Paths.HTML + '**/*.html'], ['include', reload]);
     gulp.watch([Paths.SASS + '**/*.scss'], ['sass']);
-    gulp.watch([Paths.JS + '**/*.js'], ['scripts', reload]);
+    gulp.watch([Paths.JS + '**/*.js', '!' + Paths.JS + '**/*.min.js'], ['scripts', reload]);
+    gulp.watch([Paths.ICONS + '*'], ['svgstore']);
+    gulp.watch([Paths.SPRITE + '*'], ['sprite']);
 });
 
 gulp.task('sass', function () {
@@ -70,7 +74,9 @@ gulp.task('sass', function () {
         .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
         .pipe($.sourcemaps.write('./'))
         .pipe(gulp.dest(Paths.CSS))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream({
+            match: Paths.CSS + 'styles.css'
+        }));
 });
 
 gulp.task('scripts', function () {
@@ -139,14 +145,6 @@ gulp.task('sprite', function () {
     return spriteData
         .pipe($.if('*.png', gulp.dest(Paths.IMG)))
         .pipe($.if('*.scss', gulp.dest(Paths.SASS + 'base/')));
-});
-
-gulp.task('watch', function () {
-    var path2SVG = Paths.ICONS.replace(/^\.\//, '') + '*';
-    var path2PNG = Paths.SPRITE.replace(/^\.\//, '') + '*';
-
-    $.watch(path2SVG, function () {gulp.start('svgstore');});
-    $.watch(path2PNG, function () {gulp.start('sprite');})
 });
 
 gulp.task('clean', function () {

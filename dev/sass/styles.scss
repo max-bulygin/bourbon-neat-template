@@ -16,12 +16,13 @@
 
 /// GENERIC STYLES
 @import "base/typography";
+@import "base/forms";
 @import "base/sprite";
 @import "base/layout";
 
 /// BLOCK STYLES
+@import "blocks/media";
+@import "blocks/icons";
+@import "blocks/owl-carousel";
 @import "blocks/page-header";
 @import "blocks/page-footer";
-@import "blocks/owl-carousel";
-@import "blocks/icons";
-@import "blocks/buttons";

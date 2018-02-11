@@ -3,7 +3,7 @@
 Starter kit for new HTML projects featuring:
 #### CSS
 * [Bourbon](http://bourbon.io/docs/)
-* [Neat](https://neat.bourbon.io/docs/latest/)
+* [Neat 2.0](https://neat.bourbon.io/docs/latest/)
 * [Animate.css](https://github.com/daneden/animate.css)
 * [Normalize.css](https://github.com/necolas/normalize.css/)
 
@@ -28,6 +28,7 @@ Starter kit for new HTML projects featuring:
     * :open_file_folder: `img` - images
         * :file_folder: `icons` - your svg icons
         * :file_folder: `sprite` - your png icons
+        * :file_folder: `content` - content images e.g avatars, post thumbnails, etc.
     * :open_file_folder: `js` - javascript
         * :file_folder: `modules` - your js modules
     * :open_file_folder: `sass`

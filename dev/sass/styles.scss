@@ -1,16 +1,9 @@
 /// SETTINGS AND IMPORTS
 @import "settings/variables";
-<<<<<<< Updated upstream
-@import "settings/grid-settings";
-@import "settings/hamburger-settings";
-@import "settings/owl-settings";
-@import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
-=======
 @import "settings/neat-grid";
 @import "settings/hamburger";
 @import "settings/owl-carousel";
-@import "../../bower_components/bourbon/core/bourbon";
->>>>>>> Stashed changes
+@import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "../../bower_components/neat/core/neat";
 @import "../../bower_components/normalize-scss/sass/normalize/import-now";
 @import "../../bower_components/animate.css/source/base";

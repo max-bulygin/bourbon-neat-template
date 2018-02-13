@@ -17,7 +17,7 @@
   ],
   "devDependencies": {
     "normalize-scss": "normalize.scss#^6.0.0",
-    "bourbon": "^4.3.4",
+    "bourbon": "^5.0.0",
     "neat": "^2.1.0",
     "animate.css": "^3.5.2",
     "css-hamburgers": "^0.9.3"

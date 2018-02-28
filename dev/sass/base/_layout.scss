@@ -1,9 +1,24 @@
-.grid-container {
+.container {
+  margin: 0 auto;
+  width: $container--initial;
+  position: relative;
   @include grid-container;
-}
 
-.grid-visual {
-  @include grid-visual;
+  @include grid-media($xs-grid) {
+    width: $container--xs;
+  }
+
+  @include grid-media($sm-grid) {
+    width: $container--sm;
+  }
+
+  @include grid-media($md-grid) {
+    width: $container--md;
+  }
+
+  @include grid-media($lg-grid) {
+    width: $container--lg;
+  }
 }
 
 //.left {

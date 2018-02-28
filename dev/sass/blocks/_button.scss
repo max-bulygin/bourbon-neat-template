@@ -1,0 +1,15 @@
+.button {
+  @include prefixer(appearance, none, ("webkit", "moz"));
+  display: inline-block;
+  text-align: center;
+  padding: .8em 1em;
+  text-decoration: none;
+  outline: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: all .2s;
+
+  &:hover {
+
+  }
+}

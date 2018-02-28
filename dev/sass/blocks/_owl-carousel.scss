@@ -1,3 +1,18 @@
 .owl-carousel {
+  &.off {
+    display: block;
+  }
+}
 
+.owl-nav {
+
+  svg {
+    @extend .icon;
+    display: block;
+  }
+
+  .owl-prev,
+  .owl-next {
+    border-radius: 0 !important;
+  }
 }

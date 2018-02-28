@@ -6,6 +6,7 @@
 @import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "../../bower_components/neat/core/neat";
 @import "../../bower_components/normalize-scss/sass/normalize/import-now";
+@import "../../bower_components/css-hamburgers/_sass/hamburgers/hamburgers";
 @import "../../bower_components/animate.css/source/base";
 // import required animations from source sub-folder
 @import "../../node_modules/owl.carousel/src/scss/owl.carousel";
@@ -23,6 +24,8 @@
 @import "base/layout";
 
 /// BLOCK STYLES
+@import "blocks/button";
+@import "blocks/hamburger";
 @import "blocks/media";
 @import "blocks/icons";
 @import "blocks/owl-carousel";

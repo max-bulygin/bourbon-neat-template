@@ -19,7 +19,7 @@
     "normalize-scss": "normalize.scss#^6.0.0",
     "bourbon": "^4.3.4",
     "neat": "^2.1.0",
-    "animate.css": "^3.5.2",
-    "css-hamburgers": "^0.9.3"
+    "animate.css": "^3.7.0",
+    "css-hamburgers": "^1.1.3"
   }
 }
